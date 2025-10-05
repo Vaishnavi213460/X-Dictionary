@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 
 function XDictionary() {
-  // Initialize dictionary data
   const [dictionary] = useState([
     { word: "React", meaning: "A JavaScript library for building user interfaces." },
     { word: "Component", meaning: "A reusable building block in React." },
     { word: "State", meaning: "An object that stores data for a component." }
   ]);
 
-  // State for input and search result
   const [searchWord, setSearchWord] = useState("");
   const [result, setResult] = useState("");
 
-  // Function to handle search
   const handleSearch = () => {
     const foundWord = dictionary.find(
       (item) => item.word.toLowerCase() === searchWord.trim().toLowerCase()
@@ -58,16 +55,12 @@ function XDictionary() {
       </button>
 
       <div style={{ marginTop: "30px" }}>
-        {result && (
-          result === "Word not found in the dictionary." ? (
-            <p>{result}</p>
-          ) : (
-            <>
-              <h3>Definition:</h3>
-              <p>{result}</p>
-            </>
-          )
-        )}
+        <h3>Definition:</h3>
+        <p>
+          {result
+            ? result
+            : "Search for a word to see its definition here."}
+        </p>
       </div>
     </div>
   );
